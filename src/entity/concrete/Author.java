@@ -26,7 +26,7 @@ public class Author extends Person {
 
     public void showBooks() {
         if(books.isEmpty()) {
-            System.out.println(getName() + " ' e ait eklenmiş bir kitap yok...");
+            System.out.println(getName() + " ' e ait eklenmiş bir kitap yok.");
             return;
         }
 

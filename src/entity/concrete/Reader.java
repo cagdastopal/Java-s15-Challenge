@@ -24,7 +24,7 @@ public class Reader extends Person {
     public void borrowBook(Book book) {
 
         if (books.size() >= MAX_BOOK_LIMIT) {
-            System.out.println("5 Kitaptan fazla alamazsınız!");
+            System.out.println("5 Kitaptan fazla alamazsınız.");
             return;
         }
 
@@ -48,7 +48,7 @@ public class Reader extends Person {
 
     public void showBook() {
         if (books.isEmpty()) {
-            System.out.println(getName() + " ' e ait kiralanan kitap yok!");
+            System.out.println(getName() + " ' e ait kiralanan kitap yok.");
             return;
         }
 

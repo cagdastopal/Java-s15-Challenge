@@ -58,21 +58,30 @@ public class Library {
     }
 
     //fonksiyonlar
-    public void newBook(Book book) {
-        if(!books.contains(book)) {
-            books.add(book);
-            System.out.println(book + " isimli kitap kütüphane sistemine eklenmiştir...");
+    public void newReader(Reader reader) {
+        if(!readers.contains(reader)) {
+            readers.add(reader);
+            System.out.println(reader + " isimli kullanıcı kütüphane sistemine eklenmiştir.");
         } else {
-            System.out.println(book + " isimli kitap kütüphane sisteminde kayıtlı olduğu için eklenmemiştir...");
+            System.out.println(reader + " isimli kullanıcı kütüphane sisteminde kayıtlı olduğu için eklenmemiştir.");
         }
     }
 
-    public void lendBook() {
-
+    public void newBook(Book book) {
+        if(!books.contains(book)) {
+            books.add(book);
+            System.out.println(book + " isimli kitap kütüphane sistemine eklenmiştir.");
+        } else {
+            System.out.println(book + " isimli kitap kütüphane sisteminde kayıtlı olduğu için eklenmemiştir.");
+        }
     }
 
-    public void takeBackBook() {
+    public void lendBook(Reader reader, Book book) {
+        reader.borrowBook(book);
+    }
 
+    public void takeBackBook(Reader reader, Book book) {
+        reader.returnBook(book);
     }
 
     public void showBook() {

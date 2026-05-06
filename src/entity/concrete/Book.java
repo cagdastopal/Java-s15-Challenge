@@ -63,47 +63,47 @@ public class Book implements Comparable<Book>{
 
     //setter
     private void setBookId(long bookId) {
-        ValidationUtil.requireNonNull(bookId, "`bookId` null olamaz...");
-        ValidationUtil.requirePositive(bookId, "`bookId` 0 veya daha düşük olamaz...");
+        ValidationUtil.requireNonNull(bookId, "`bookId` null olamaz.");
+        ValidationUtil.requirePositive(bookId, "`bookId` 0 veya daha düşük olamaz.");
         this.bookId = bookId;
     }
 
     public void setAuthor(String author) {
-        ValidationUtil.requireNonNull(author, "`author` null olamaz...");
-        ValidationUtil.requireNonEmpty(author, "`author` boş olamaz...");
+        ValidationUtil.requireNonNull(author, "`author` null olamaz.");
+        ValidationUtil.requireNonEmpty(author, "`author` boş olamaz.");
         this.author = author;
     }
 
     public void setName(String name) {
-        ValidationUtil.requireNonNull(name, "`name` null olamaz...");
-        ValidationUtil.requireNonEmpty(name, "`name` boş olamaz...");
+        ValidationUtil.requireNonNull(name, "`name` null olamaz.");
+        ValidationUtil.requireNonEmpty(name, "`name` boş olamaz.");
         this.name = name;
     }
 
     public void setPrice(double price) {
-        ValidationUtil.requireNonNull(price, "`price` null olamaz...");
-        ValidationUtil.requirePositive(price, "`price` 0 veya daha düşük olamaz...");
+        ValidationUtil.requireNonNull(price, "`price` null olamaz.");
+        ValidationUtil.requirePositive(price, "`price` 0 veya daha düşük olamaz.");
         this.price = price;
     }
 
     public void setStatus(Status status) {
-        ValidationUtil.requireNonNull(status, "`status` null olamaz...");
+        ValidationUtil.requireNonNull(status, "`status` null olamaz.");
         this.status = status;
     }
 
     public void setEdition(String edition) {
-        ValidationUtil.requireNonNull(edition, "`edition` null olamaz...");
-        ValidationUtil.requireNonEmpty(edition, "`edition` boş olamaz...");
+        ValidationUtil.requireNonNull(edition, "`edition` null olamaz.");
+        ValidationUtil.requireNonEmpty(edition, "`edition` boş olamaz.");
         this.edition = edition;
     }
 
     public void setDateOfPurchase(LocalDate dateOfPurchase) {
-        ValidationUtil.requireNonNull(dateOfPurchase, "`dateOfPurchase` null olamaz...");
+        ValidationUtil.requireNonNull(dateOfPurchase, "`dateOfPurchase` null olamaz.");
         this.dateOfPurchase = dateOfPurchase;
     }
 
     public void setReader(Reader reader) {
-        ValidationUtil.requireNonNull(reader, "`reader` null olamaz...");
+        ValidationUtil.requireNonNull(reader, "`reader` null olamaz.");
         this.reader = reader;
     }
 
@@ -130,7 +130,7 @@ public class Book implements Comparable<Book>{
                 ", status=" + status +
                 ", edition='" + edition + '\'' +
                 ", dateOfPurchase=" + dateOfPurchase +
-                ", reader=" + (reader == null ? "Yok" : reader.getName()) +
+                ", reader=" + reader +
                 '}';
     }
 

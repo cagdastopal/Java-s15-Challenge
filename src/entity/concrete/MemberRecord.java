@@ -56,37 +56,37 @@ public class MemberRecord {
 
     //setter
     private void setMemberId(long memberId) {
-        ValidationUtil.requireNonNull(memberId, "`memberId` null olamaz...");
-        ValidationUtil.requirePositive(memberId, "`memberId` 0 veya daha düşük olamaz...");
+        ValidationUtil.requireNonNull(memberId, "`memberId` null olamaz.");
+        ValidationUtil.requirePositive(memberId, "`memberId` 0 veya daha düşük olamaz.");
         this.memberId = memberId;
     }
 
     public void setType(String type) {
-        ValidationUtil.requireNonNull(type, "`type` null olamaz...");
-        ValidationUtil.requireNonEmpty(type, "`type` boş olamaz...");
+        ValidationUtil.requireNonNull(type, "`type` null olamaz.");
+        ValidationUtil.requireNonEmpty(type, "`type` boş olamaz.");
         this.type = type;
     }
 
     public void setDateOfMembership(LocalDate dateOfMembership) {
-        ValidationUtil.requireNonNull(dateOfMembership, "`dateOfMembership` null olamaz...");
+        ValidationUtil.requireNonNull(dateOfMembership, "`dateOfMembership` null olamaz.");
         this.dateOfMembership = dateOfMembership;
     }
 
     public void setName(String name) {
-        ValidationUtil.requireNonNull(name, "`name` null olamaz...");
-        ValidationUtil.requireNonEmpty(name, "`name` boş olamaz...");
+        ValidationUtil.requireNonNull(name, "`name` null olamaz.");
+        ValidationUtil.requireNonEmpty(name, "`name` boş olamaz.");
         this.name = name;
     }
 
     public void setAddress(String address) {
-        ValidationUtil.requireNonNull(address, "`address` null olamaz...");
-        ValidationUtil.requireNonEmpty(address, "`address` boş olamaz...");
+        ValidationUtil.requireNonNull(address, "`address` null olamaz.");
+        ValidationUtil.requireNonEmpty(address, "`address` boş olamaz.");
         this.address = address;
     }
 
     public void setPhoneNo(String phoneNo) {
-        ValidationUtil.requireNonNull(phoneNo, "`phoneNo` null olamaz...");
-        ValidationUtil.requireNonEmpty(phoneNo, "`phoneNo` boş olamaz...");
+        ValidationUtil.requireNonNull(phoneNo, "`phoneNo` null olamaz.");
+        ValidationUtil.requireNonEmpty(phoneNo, "`phoneNo` boş olamaz.");
         this.phoneNo = phoneNo;
     }
 
@@ -128,7 +128,7 @@ public class MemberRecord {
         if(NO_BOOKS_ISSUED >= 0 && NO_BOOKS_ISSUED < MAX_BOOK_LIMIT) {
             NO_BOOKS_ISSUED += 1;
         } else {
-            System.out.println(memberId + " aynı anda kitap kiralama limitine ulaşmıştır, kitap bırakmadan yeni kitap kiralayamaz...");
+            System.out.println(memberId + " aynı anda kitap kiralama limitine ulaşmıştır, kitap bırakmadan yeni kitap kiralayamaz.");
         }
     }
 
