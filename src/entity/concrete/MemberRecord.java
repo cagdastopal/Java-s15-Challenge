@@ -16,7 +16,8 @@ public class MemberRecord {
 
     private int NO_BOOKS_ISSUED = 0 ;
     private double AMOUNT = 0.0;
-    private static final int MAX_BOOK_LIMIT = 5;
+    private final int MAX_BOOK_LIMIT = 5;
+    private final double BOOK_PRICE = 50.0;
 
     //constructor
     public MemberRecord(long memberId, String type, LocalDate dateOfMembership, String name,
@@ -52,6 +53,10 @@ public class MemberRecord {
 
     public String getPhoneNo() {
         return phoneNo;
+    }
+
+    public int getMaxBookLimit() {
+        return MAX_BOOK_LIMIT;
     }
 
     //setter
@@ -119,7 +124,7 @@ public class MemberRecord {
         return Objects.hashCode(memberId);
     }
 
-    //fonksiyonlar
+    //methods
     public long getMember() {
         return memberId;
     }
@@ -138,8 +143,8 @@ public class MemberRecord {
         }
     }
 
-    public void payBill(double pay) {
-        AMOUNT += pay;
+    public void takePay() {
+        AMOUNT += BOOK_PRICE;
         System.out.println(memberId + " id ' li" + name + " üye " + AMOUNT + " TL ödeme yaptı.");
     }
 }

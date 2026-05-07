@@ -1,11 +1,13 @@
 package entity.abstracts;
 
+import utils.ValidationUtil;
+
 public abstract class Person {
     private String name;
 
     //constructor
     public Person(String name) {
-        this.name = name;
+        this.setName(name);
     }
 
     //getter
@@ -13,6 +15,12 @@ public abstract class Person {
         return name;
     }
 
-    //fonksiyonlar
+    public void setName(String name) {
+        ValidationUtil.requireNonNull(name, "`name` null olamaz.");
+        ValidationUtil.requireNonEmpty(name, "`name` boş olamaz.");
+        this.name = name;
+    }
+
+    //methods
     public abstract void whoYouAre();
 }

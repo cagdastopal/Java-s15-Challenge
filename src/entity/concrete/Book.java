@@ -102,10 +102,11 @@ public class Book implements Comparable<Book>{
         this.dateOfPurchase = dateOfPurchase;
     }
 
+
     public void setReader(Reader reader) {
-        ValidationUtil.requireNonNull(reader, "`reader` null olamaz.");
         this.reader = reader;
     }
+
 
     public void changeOwner(Reader reader) {
       this.setReader(reader);

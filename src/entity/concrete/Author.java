@@ -1,13 +1,14 @@
 package entity.concrete;
 
 import entity.abstracts.Person;
+import utils.ValidationUtil;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Author extends Person {
-    private Set<Book> books = new HashSet<>();
+    private List<Book> books = new ArrayList<>();
 
     //constructor
     public Author(String name) {
@@ -15,16 +16,28 @@ public class Author extends Person {
     }
 
     //getter
-    public Set<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    //fonksiyonlar
-    public void newBook(Book book) {
-        books.add(book);
+    //setter
+    public void setBooks(List<Book> books) {
+        ValidationUtil.requireNonNull(books, "`books` null olamaz.");
+        this.books = books;
     }
 
-    public void showBooks() {
+    //methods
+    public void newBook(Book book) {
+        ValidationUtil.requireNonNull(book, "`book` null olamaz.");
+
+        if(!books.contains(book)) {
+            books.add(book);
+        } else {
+            System.out.println(book + " zaten ekli.");
+        }
+    }
+
+    public void showBook() {
         if(books.isEmpty()) {
             System.out.println(getName() + " ' e ait eklenmiş bir kitap yok.");
             return;
