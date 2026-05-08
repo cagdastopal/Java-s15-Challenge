@@ -81,6 +81,10 @@ public class Reader extends Person {
         }
     }
 
+    public void display() {
+        System.out.println(toString());
+    }
+
     //equals
     @Override
     public boolean equals(Object o) {

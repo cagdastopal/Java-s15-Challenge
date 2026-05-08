@@ -21,6 +21,12 @@ public abstract class Person {
         this.name = name;
     }
 
+    //toString
+    @Override
+    public String toString() {
+        return name;
+    }
+
     //methods
     public abstract void whoYouAre();
 }

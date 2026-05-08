@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Journals extends Book {
 
     //constructor
-    public Journals(long bookId, String author, String name, double price, String edition, LocalDate dateOfPurchase) {
-        super(bookId, author, name, price, edition, dateOfPurchase);
+    public Journals(Author author, String name, double price, String edition, LocalDate dateOfPurchase) {
+        super(author, name, price, edition, dateOfPurchase);
     }
 }

@@ -7,8 +7,10 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Book implements Comparable<Book>{
+    private static long id = 1;
+
     private long bookId;
-    private String author;
+    private Author author;
     private String name;
     private double price;
     private Status status;
@@ -17,8 +19,8 @@ public class Book implements Comparable<Book>{
     private Reader reader;
 
     //constructor
-    public Book(long bookId, String author, String name, double price, String edition, LocalDate dateOfPurchase) {
-        this.setBookId(bookId);
+    public Book(Author author, String name, double price, String edition, LocalDate dateOfPurchase) {
+        this.bookId = id++;
         this.setAuthor(author);
         this.setName(name);
         this.setPrice(price);
@@ -33,7 +35,7 @@ public class Book implements Comparable<Book>{
         return bookId;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
@@ -62,15 +64,8 @@ public class Book implements Comparable<Book>{
     }
 
     //setter
-    private void setBookId(long bookId) {
-        ValidationUtil.requireNonNull(bookId, "`bookId` null olamaz.");
-        ValidationUtil.requirePositive(bookId, "`bookId` 0 veya daha düşük olamaz.");
-        this.bookId = bookId;
-    }
-
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         ValidationUtil.requireNonNull(author, "`author` null olamaz.");
-        ValidationUtil.requireNonEmpty(author, "`author` boş olamaz.");
         this.author = author;
     }
 
@@ -107,7 +102,7 @@ public class Book implements Comparable<Book>{
         this.reader = reader;
     }
 
-
+    //methods
     public void changeOwner(Reader reader) {
       this.setReader(reader);
     }

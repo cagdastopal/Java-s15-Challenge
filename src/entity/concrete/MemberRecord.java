@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class MemberRecord {
+    private static long id = 1;
+
     private long memberId;
     private String type;
     private LocalDate dateOfMembership;
@@ -13,16 +15,15 @@ public class MemberRecord {
     private String address;
     private String phoneNo;
 
-
     private int NO_BOOKS_ISSUED = 0 ;
     private double AMOUNT = 0.0;
     private final int MAX_BOOK_LIMIT = 5;
     private final double BOOK_PRICE = 50.0;
 
     //constructor
-    public MemberRecord(long memberId, String type, LocalDate dateOfMembership, String name,
+    public MemberRecord(String type, LocalDate dateOfMembership, String name,
                         String address, String phoneNo) {
-        this.setMemberId(memberId);
+        this.memberId = id++;
         this.setType(type);
         this.setDateOfMembership(dateOfMembership);
         this.setName(name);
@@ -60,12 +61,6 @@ public class MemberRecord {
     }
 
     //setter
-    private void setMemberId(long memberId) {
-        ValidationUtil.requireNonNull(memberId, "`memberId` null olamaz.");
-        ValidationUtil.requirePositive(memberId, "`memberId` 0 veya daha düşük olamaz.");
-        this.memberId = memberId;
-    }
-
     public void setType(String type) {
         ValidationUtil.requireNonNull(type, "`type` null olamaz.");
         ValidationUtil.requireNonEmpty(type, "`type` boş olamaz.");
