@@ -47,6 +47,11 @@ public class Reader extends Person {
             return;
         }
 
+        if (book.getReader() != null) {
+            System.out.println("Bu kitap zaten başka bir okuyucuda.");
+            return;
+        }
+
         books.add(book);
         book.changeOwner(this);
         book.updateStatus(Status.BORROWED);
