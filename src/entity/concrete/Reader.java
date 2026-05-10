@@ -56,14 +56,14 @@ public class Reader extends Person {
         book.changeOwner(this);
         book.updateStatus(Status.BORROWED);
         memberRecord.incBookIssued();
-        memberRecord.takePay();
-        System.out.println(getName() + ", " + book + " ' ı ödünç aldı.");
+        System.out.println(getName() + " adlı üye " + book.getName() + " isimli kitabı ödünç aldı.");
+        memberRecord.takePay(book);
     }
 
     public void returnBook(Book book) {
         ValidationUtil.requireNonNull(book, "Book null olamaz.");
         if (!books.contains(book)) {
-            System.out.println("Bu kitap " + getName() + " kullanıcısında değil.");
+            System.out.println("Bu kitap " + getName() + " adlı kullanıcısında kiralık değil.");
             return;
         }
 
@@ -71,7 +71,8 @@ public class Reader extends Person {
         book.updateStatus(Status.AVAILABLE);
         book.changeOwner(null);
         memberRecord.decBookIssued();
-        System.out.println(getName() + ", " + book + " ' ı iade etti.");
+        System.out.println(getName() + " adlı üye " + book.getName() + " isimli kitabı iade etti.");
+        memberRecord.getPay(book);
     }
 
     public void showBook() {
@@ -87,7 +88,7 @@ public class Reader extends Person {
     }
 
     public void display() {
-        System.out.println(toString());
+        System.out.println(this);
     }
 
     //equals

@@ -15,12 +15,11 @@ public class MemberRecord {
     private String address;
     private String phoneNo;
 
-    private int NO_BOOKS_ISSUED = 0 ;
-    private double AMOUNT = 0.0;
-    private final int MAX_BOOK_LIMIT = 5;
-    private final double BOOK_PRICE = 50.0;
+    private int noBooksIssued = 0;
+    private double amount = 0.0;
 
-    //constructor
+    private final int MAX_BOOK_LIMIT = 5;
+
     public MemberRecord(String type, LocalDate dateOfMembership, String name,
                         String address, String phoneNo) {
         this.memberId = id++;
@@ -31,7 +30,6 @@ public class MemberRecord {
         this.setPhoneNo(phoneNo);
     }
 
-    //getter
     public long getMemberId() {
         return memberId;
     }
@@ -56,11 +54,18 @@ public class MemberRecord {
         return phoneNo;
     }
 
+    public int getNoBooksIssued() {
+        return noBooksIssued;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
     public int getMaxBookLimit() {
         return MAX_BOOK_LIMIT;
     }
 
-    //setter
     public void setType(String type) {
         ValidationUtil.requireNonNull(type, "`type` null olamaz.");
         ValidationUtil.requireNonEmpty(type, "`type` boş olamaz.");
@@ -90,7 +95,42 @@ public class MemberRecord {
         this.phoneNo = phoneNo;
     }
 
-    //toString
+    public void incBookIssued() {
+        if (noBooksIssued < MAX_BOOK_LIMIT) {
+            noBooksIssued++;
+        } else {
+            System.out.println(memberId + " id'li " + name + " kitap kiralama limitine ulaşmıştır.");
+        }
+    }
+
+    public void decBookIssued() {
+        if (noBooksIssued > 0) {
+            noBooksIssued--;
+        }
+    }
+
+    public void takePay(Book book) {
+        ValidationUtil.requireNonNull(book, "`book` null olamaz.");
+
+        amount += book.getPrice();
+
+        System.out.println(name + " adlı üye " + book.getPrice() + " TL ödeme yaptı.");
+        System.out.println("Toplam ödeme: " + amount + " TL");
+    }
+
+    public void getPay(Book book) {
+        ValidationUtil.requireNonNull(book, "`book` null olamaz.");
+
+        amount -= book.getPrice()/2;
+
+        System.out.println(name + " adlı üye " + book.getPrice() / 2 + " TL ödeme aldı.");
+        System.out.println(name + " adlı üyenin toplam ödemesi : " + amount + " TL");
+    }
+
+    public long getMember() {
+        return memberId;
+    }
+
     @Override
     public String toString() {
         return "MemberRecord{" +
@@ -100,46 +140,22 @@ public class MemberRecord {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", phoneNo='" + phoneNo + '\'' +
+                ", noBooksIssued=" + noBooksIssued +
+                ", amount=" + amount +
                 '}';
     }
 
-    //equals
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MemberRecord memberrecord = (MemberRecord) o;
-        return Objects.equals(memberId, memberrecord.memberId);
+        MemberRecord that = (MemberRecord) o;
+        return memberId == that.memberId;
     }
 
-    //hashCode
     @Override
     public int hashCode() {
-        return Objects.hashCode(memberId);
-    }
-
-    //methods
-    public long getMember() {
-        return memberId;
-    }
-
-    public void incBookIssued() {
-        if(NO_BOOKS_ISSUED >= 0 && NO_BOOKS_ISSUED < MAX_BOOK_LIMIT) {
-            NO_BOOKS_ISSUED += 1;
-        } else {
-            System.out.println(memberId + " aynı anda kitap kiralama limitine ulaşmıştır, kitap bırakmadan yeni kitap kiralayamaz.");
-        }
-    }
-
-    public void decBookIssued() {
-        if(NO_BOOKS_ISSUED > 0 && NO_BOOKS_ISSUED <= MAX_BOOK_LIMIT) {
-            NO_BOOKS_ISSUED -= 1;
-        }
-    }
-
-    public void takePay() {
-        AMOUNT += BOOK_PRICE;
-        System.out.println(memberId + " id ' li" + name + " üye " + AMOUNT + " TL ödeme yaptı.");
+        return Objects.hash(memberId);
     }
 }
