@@ -37,7 +37,7 @@ public class Main {
         boolean running = true;
         while (running) {
             System.out.println("\n");
-            System.out.println("------ KÜTÜPHANE KONSOL UYGULAMASI ------");
+            System.out.println("KÜTÜPHANE KONSOL UYGULAMASI");
             System.out.println("1 - Kitap Ekle");
             System.out.println("2 - Kitapları Listele");
             System.out.println("3 - Okuyucu Ekle");
@@ -48,6 +48,7 @@ public class Main {
             System.out.println("8 - Kitabı Geri Bırak");
             System.out.println("9 - Kitap Bilgilerini Güncelle");
             System.out.println("10 - Yazara Ait Kitapları Listele");
+            System.out.println("11 - Okuyuculara Ait Kitapları Listele");
             System.out.println("0 - Çıkış");
 
             int choice = scanner.nextInt();
@@ -56,6 +57,7 @@ public class Main {
             switch (choice) {
                 case 0:
                     running = false;
+                    System.out.println("\n");
                     System.out.println("Program kapatılıyor...");
                     break;
 
@@ -80,9 +82,11 @@ public class Main {
                     }
 
                     if (exists) {
+                        System.out.println("\n");
                         System.out.println("Bu kitap sistemde zaten kayıtlı.");
                     } else {
                         bookList.add(new Book(new Author(author), name, price, edition, LocalDate.now()));
+                        System.out.println("\n");
                         System.out.println("Kitap sisteme eklenmiştir.");
                     }
 
@@ -90,8 +94,10 @@ public class Main {
 
                 case 2:
                     if (bookList.isEmpty()) {
+                        System.out.println("\n");
                         System.out.println("Kütüphane boş.");
                     } else {
+                        System.out.println("\n");
                         System.out.println("Kitap Listesi : ");
                         for (Book book : bookList) {
                             book.display();
@@ -118,17 +124,21 @@ public class Main {
                     }
 
                     if (readerExists) {
+                        System.out.println("\n");
                         System.out.println("Bu okuyucu sistemde zaten kayıtlı.");
                     } else {
                         readerList.add(new Reader(readerName, new MemberRecord("Student", LocalDate.now(), readerName, readerAddress, readerPhone)));
+                        System.out.println("\n");
                         System.out.println("Okuyucu kütüphane sistemine eklenmiştir.");
                     }
                     break;
 
                 case 4:
                     if (readerList.isEmpty()) {
+                        System.out.println("\n");
                         System.out.println("Liste boş.");
                     } else {
+                        System.out.println("\n");
                         System.out.println("Okuyucu Listesi : ");
                         for (Reader reader : readerList) {
                             reader.display();
@@ -150,6 +160,7 @@ public class Main {
                     }
 
                     if (!srcBook) {
+                        System.out.println("\n");
                         System.out.println("Kitap bulunamadı.");
                     }
 
@@ -170,8 +181,10 @@ public class Main {
 
                     if (dltBook != null) {
                         bookList.remove(dltBook);
+                        System.out.println("\n");
                         System.out.println("Kitap sistemden silinmiştir.");
                     } else {
+                        System.out.println("\n");
                         System.out.println("Kitap bulunamadı.");
                     }
 
@@ -306,6 +319,39 @@ public class Main {
                     }
 
                     break;
+
+                case 11:
+
+                    System.out.print("Okuyucu adı : ");
+                    String readerBookName = scanner.nextLine();
+
+                    Reader selectedReader = null;
+
+                    for (Reader reader : readerList) {
+                        if (reader.getName().contains(readerBookName)) {
+                            selectedReader = reader;
+                            break;
+                        }
+                    }
+
+                    if (selectedReader == null) {
+                        System.out.println("Okuyucu bulunamadı.");
+                    } else {
+                        if (selectedReader.getBooks().isEmpty()) {
+                            System.out.println("Bu okuyucuya ait kitap yok.");
+                        } else {
+                            System.out.println(selectedReader.getName() + " adlı okuyucunun kitapları : ");
+                            for (Book book : selectedReader.getBooks()) {
+                                book.display();
+                            }
+                        }
+                    }
+
+                    break;
+
+                default:
+                    System.out.println("Yanlış bir seçim yaptınız, tekrar giriniz.");
+
             }
         }
     }
