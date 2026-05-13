@@ -4,6 +4,7 @@ import entity.abstracts.Person;
 import utils.ValidationUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -17,7 +18,7 @@ public class Author extends Person {
 
     //getter
     public List<Book> getBooks() {
-        return books;
+        return Collections.unmodifiableList(books);
     }
 
     //setter

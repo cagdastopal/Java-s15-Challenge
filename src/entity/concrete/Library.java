@@ -3,6 +3,7 @@ package entity.concrete;
 import utils.ValidationUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,11 +19,11 @@ public class Library {
 
     //getter
     public List<Book> getBooks() {
-        return books;
+        return Collections.unmodifiableList(books);
     }
 
     public List<Reader> getReaders() {
-        return readers;
+        return Collections.unmodifiableList(readers);
     }
 
     //setter

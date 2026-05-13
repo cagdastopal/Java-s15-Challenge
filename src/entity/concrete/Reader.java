@@ -4,6 +4,7 @@ import entity.abstracts.Person;
 import entity.enums.Status;
 import utils.ValidationUtil;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ public class Reader extends Person {
 
     //getter
     public Set<Book> getBooks() {
-        return books;
+        return Collections.unmodifiableSet(books);
     }
 
     public MemberRecord getMemberRecord() {
